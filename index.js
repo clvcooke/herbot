@@ -8,7 +8,7 @@ var mongoOptions = {
 	password: "password"
 }
 
-mongoose.conenct('mongodb://@ds039095.mongolab.com:39095/heroku_dcsmg1bn', mongoOptions);
+mongoose.connect('mongodb://@ds039095.mongolab.com:39095/heroku_dcsmg1bn', mongoOptions);
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
