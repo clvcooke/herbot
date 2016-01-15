@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 
 var mongoOptions = {
 	user: "herbot",
-	password: "password"
+	pass: "password"
 }
 
 mongoose.connect('mongodb://@ds039095.mongolab.com:39095/heroku_dcsmg1bn', mongoOptions);
@@ -18,12 +18,12 @@ db.once('open', function(){
 
 //SCHEMA
 
-var Plant = new mongoose.Schema({
+var Plant = mongoose.model('Plant',new mongoose.Schema({
 	waterLevel: String
 },
 {
 	strict: false
-});
+}));
 
 
 app.set('port', (process.env.PORT || 5000));
@@ -36,13 +36,10 @@ app.get('/*', function(request, response) {
 
 
 	   if (url) {
-
-
-	   
-	   
-	   	   var plant = new Plant({
-	   	waterLevel: url
-	   });
+ 
+	   	var plant = new Plant({
+	   		waterLevel: url
+	   	});
 
 	   plant.save(function(err){
 	   	if(err){
