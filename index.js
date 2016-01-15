@@ -34,7 +34,13 @@ app.get('/*', function(request, response) {
 	   var url = request.originalUrl;
 	   response.send(200);
 
-	   var plant = new Plant({
+
+	   if (url) {
+
+
+	   
+	   
+	   	   var plant = new Plant({
 	   	waterLevel: url
 	   });
 
@@ -43,6 +49,7 @@ app.get('/*', function(request, response) {
 			console.log('Save was unsuccesful:' +  err);
 		}
 	   });
+	   }
 });
 
 app.listen(app.get('port'), function() {
